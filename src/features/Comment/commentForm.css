@@ -1,0 +1,54 @@
+/* 댓글 전체 영역 */
+.comment-section {
+    width: 100%;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 0 0 1px #dcdcdc inset;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* 라벨 */
+.comment-label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* textarea */
+.comment-textarea {
+    width: 100%;
+    height: 120px;
+    padding: 16px;
+    border: none;
+    resize: none;
+    outline: none;
+    font-size: 15px;
+    line-height: 1.4;
+    color: #333;
+    border-radius: 10px;
+}
+
+/* action 영역 */
+.comment-action {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 12px;
+    border-top: 1px solid #e0e0e0;
+}
+
+/* 버튼 */
+.comment-submit {
+    background-color: #b8a8f0 !important;
+    color: white !important;
+    padding: 10px 22px;
+    border-radius: 20px !important;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.comment-submit:hover {
+    background-color: #a896ed !important;
+}

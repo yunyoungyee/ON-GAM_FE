@@ -1,0 +1,23 @@
+.login-page {
+  display: flex;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.login-panel .actions {
+  gap: 8px;
+}
+
+.link-to-signup {
+  border: none;
+  background: none;
+  color: var(--text-dark);
+  text-decoration: none;
+  cursor: pointer;
+}

@@ -1,0 +1,36 @@
+.post-list-page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.post-list__intro {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  padding: 24px;
+  border-radius: 18px;
+  border: 1px solid #ededf6;
+}
+
+#intro-text{
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.6;
+  margin: 20px;
+}
+
+#intro-text .hightlight{
+  font-weight: 600;
+}
+
+.post-list__intro p {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.post-list__intro .ui-button {
+  width: 160px;
+}

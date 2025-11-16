@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap');
+@import './shared/components/header.css';
+@import './shared/components/button.css';
+@import './shared/components/modal.css';
+@import './features/Login/loginPage.css';
+@import './features/Signup/signupPage.css';
+@import './features/Post/postCard.css';
+@import './features/Post/postListPage.css';
+@import './features/PostCreate/postCreatePage.css';
+@import './features/PostDetail/postDetailPage.css';
+@import './features/PostEdit/postEditPage.css';
+@import './features/ProfileEdit/profileEditPage.css';
+@import './features/PasswordEdit/passwordEditPage.css';
+@import './features/Comment/CommentCard.css';
+@import './features/Comment/CommentForm.css';
+:root {
+  --bg-main: #f4f4f6;
+  --bg-panel: #ffffff;
+  --border-light: #cfcfd8;
+  --text-dark: #222222;
+  --text-muted: #9a9aab;
+  --primary: #ACA0EB;
+  --primary-dark: #7F6AEE ;
+  --danger: #ff4d4f;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  font-size: 16px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Noto Sans KR', sans-serif;
+  background: var(--bg-main);
+  color: var(--text-dark);
+}
+
+#app {
+  min-height: 100vh;
+  background: var(--bg-main);
+}
+
+main.page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 40px 24px 120px;
+}
+
+section.panel {
+  width: 100%;
+  background: var(--bg-panel);
+  border-radius: 18px;
+  padding: 32px;
+  border: 1px solid #e6e6ef;
+  box-shadow: var(--shadow);
+}
+
+h1.page-title {
+  font-size: 28px;
+  margin: 32px 0;
+  text-align: center;
+}
+
+.form-field {
+  width: 100%;
+  min-width: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-field label {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.form-field input,
+.form-field textarea {
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 15px;
+  font-family: inherit;
+  background: #fff;
+  
+}
+
+.form-field textarea {
+  min-height: 200px;
+  resize: none;
+}
+
+.form-field .helper-text {
+  display: block;    
+  width: 100%;     
+  height: 15px;     
+  line-height: 13px;
+  overflow: hidden;     
+  white-space: nowrap; 
+  text-overflow: ellipsis; 
+}
+
+.helper-text {
+  width: 100%;
+  color: var(--danger);
+  font-size: 13px;
+  min-width: 20px;
+}
+
+.form-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.actions {
+  margin-top: 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.actions.horizontal {
+  flex-direction: row;
+  justify-content: center;
+}
+
+.card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 24px;
+  border: 1px solid #ededf5;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+}
+
+.card .card-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 8px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #ddd;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.link-button {
+  border: none;
+  background: none;
+  color: var(--text-dark);
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 14px;
+}
+
+.tablet-only {
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+@media (max-width: 600px) {
+  main.page {
+    padding: 24px 16px 80px;
+  }
+
+  section.panel {
+    padding: 24px 20px;
+  }
+}

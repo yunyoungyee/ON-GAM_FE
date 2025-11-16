@@ -1,0 +1,123 @@
+.post-detail-page {
+  max-width: 860px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.post-detail {
+  background: #fff;
+  padding: 40px;
+  border-radius: 22px;
+  border: 1px solid #e1e1ec;
+}
+
+.post-detail__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.post-detail__author {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.post-detail__author strong {
+  display: block;
+}
+
+.post-detail__author span {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.post-detail__actions {
+  display: flex;
+  gap: 12px;
+}
+
+.post-detail__actions button {
+  border: 1px solid var(--border-light);
+  background: #fff;
+  padding: 8px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.post-detail__image {
+  height: 240px;
+  border-radius: 18px;
+  background: #dfe2f0;
+  margin-bottom: 20px;
+}
+
+.post-detail__content {
+  line-height: 1.6;
+  color: #333;
+}
+
+.post-detail__metaInfo {
+  display: flex;
+  justify-content: center; /* 카드 간 동일 간격 */
+  align-items: center;
+  gap: 16px;
+  padding: 16px 12px;
+  background: #fff;
+  border-radius: 12px;
+}
+
+.metaInfo-box {
+  width: 120px;
+  height: 80px;
+
+  background: #e5e5e5;    /* 이미지와 비슷한 연한 회색 */
+  border-radius: 12px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 1px; /* 숫자와 라벨 간격 */
+}
+
+.metaInfo-box strong {
+  font-size: 20px;
+  font-weight: 700;
+  color: #000;
+}
+
+/* 라벨 텍스트 */
+.metaInfo-box span {
+  font-size: 14px;
+  font-weight: 700;
+  color: #333;
+}
+
+.comment-section {
+  background: #fff;
+  padding: 28px;
+  border-radius: 18px;
+  border: 1px solid #e5e5f1;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.comment-section textarea {
+  min-height: 120px;
+  border-radius: 12px;
+  border: 1px solid var(--border-light);
+  padding: 14px;
+  resize: none;
+}
+
+.comment-list {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,10 @@
+.post-edit-page {
+  max-width: 660px;
+  margin: 0 auto;
+}
+
+.post-edit-page .upload-box {
+  padding: 14px;
+  border: 1px dashed var(--border-light);
+  border-radius: 10px;
+}
