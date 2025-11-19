@@ -1,4 +1,3 @@
-import { createHeader } from '../../shared/components/header.js';
 import { createButton } from '../../shared/components/button.js';
 import { navigate } from '../../core/router.js';
 import { validationEmail, validationPassword } from '../../shared/validation.js';

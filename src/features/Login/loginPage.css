@@ -1,4 +1,4 @@
-.login-page{
+.login-page {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8,13 +8,18 @@
   column-gap: 60px;
   padding: 0 40px;
 }
-.login-page.highlight{
-    background: linear-gradient(950deg, #aeaeae 0%, #000000 100%);
+
+.login-page.highlight {
+  background: linear-gradient(90deg, #000000, #cecece, #ffffff);
+  background-size: 200% 100%;
+  animation: slideBg 1s ease forwards;
 }
+
 .login-panel .actions {
   gap: 8px;
 }
-.login-card{
+
+.login-card {
   margin-top: -40px;
   width: 350px;
   padding: 40px 30px 50px;
@@ -24,20 +29,36 @@
   z-index: 1;
   box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.08);
 }
-.login-card .title .ghost{
-  color:#ffffff;
+
+.login-card .title .ghost {
+  color: #ffffff;
   margin-left: 10px;
 }
-.login-card.highlight{
-  background: #000000;
+
+.login-card.highlight {
+  background: linear-gradient(90deg, #000000, #cecece, #ffffff);
+  background-size: 600% 100%;
+  animation: slideBg 1s ease forwards;
 }
+
+@keyframes slideBg {
+  0% {
+    background-position: 100% 0%;
+  }
+
+  100% {
+    background-position: 0% 200%;
+  }
+}
+
 .login-card .title {
   margin: 0;
   font-size: 35px;
   font-weight: 700;
   color: #000000;
 }
-.login-card .title .highlight{
+
+.login-card .title .highlight {
   font-size: 35px;
   font-weight: 700;
   color: #f2ff66;
@@ -46,12 +67,14 @@
 .login-card .title span {
   display: inline-block;
 }
-.text{
+
+.text {
   text-align: right;
   color: #ffffff;
   font-weight: bold;
 }
-.form-field input[type="email"]{
+
+.form-field input[type="email"] {
   width: 100%;
   padding: 14px 16px;
   margin-bottom: 14px;
@@ -61,12 +84,14 @@
   font-size: 15px;
   transition: border 0.2s;
 }
+
 .form-field input[type="email"]:focus {
   border-color: #7ca9ff;
   background: white;
   outline: none;
 }
-.form-field input[type="password"]{
+
+.form-field input[type="password"] {
   width: 100%;
   padding: 14px 16px;
   margin-bottom: 14px;
@@ -76,11 +101,13 @@
   font-size: 15px;
   transition: border 0.2s;
 }
+
 .form-field input[type="password"]:focus {
   border-color: #7ca9ff;
   background: white;
   outline: none;
 }
+
 .login-card .ui-button:disabled {
   width: 100%;
   padding: 15px 0;
@@ -90,14 +117,15 @@
   border: none;
   color: white;
   font-weight: 600;
-  margin-top: 10px;
   transition: transform 0.15s ease;
   cursor: not-allowed;
 }
-/* 호버용 css추가 */ 
+
+/* 호버용 css추가 */
 .login-card .ui-button:hover:not(:disabled) {
   background: linear-gradient(135deg, #6da7ff, #7a85ff);
 }
+
 .login-card .ui-button--primary {
   background: linear-gradient(135deg, #b4d2ff, #a7aefd);
   color: #fff;
@@ -112,7 +140,7 @@
 }
 
 .actions .link-to-signup.highlight {
-  color:#ffffff;
+  color: #ffffff;
 }
 
 .character {
@@ -120,6 +148,7 @@
   width: 130px;
   height: 130px;
 }
+
 .character-area {
   display: flex;
   justify-content: center;
@@ -137,58 +166,72 @@
 .face.happy {
   width: 180px;
   height: 180px;
-  background: #f9e17b;
+  background: #FFD93B;
   border-radius: 50%;
-  box-shadow: 0 20px 20px rgba(250,220,70,.4);
+  box-shadow: 0 20px 20px rgba(250, 220, 70, .4);
 }
 
 
 .face.sad {
   width: 180px;
   height: 180px;
-  background: #8eb1f5;
+  background: #6BA6FF;
   border-radius: 25px;
-  box-shadow: 0 20px 20px rgba(120,160,240,.35);
+  box-shadow: 0 20px 20px rgba(120, 160, 240, .35);
 }
 
 
 .face.angry {
   width: 180px;
   height: 180px;
-  background: #e66958;
+  background: #FF6B6B;
   border-radius: 50%;
-  box-shadow: 0 20px 20px rgba(220,80,50,.4);
+  box-shadow: 0 20px 20px rgba(220, 80, 50, .4);
 }
 
 
 .face.tired {
   width: 180px;
   height: 280px;
-  background: #c9b8e7;
+  background: #D8C3A5;
   border-radius: 40px;
-  box-shadow: 0 8px 22px rgba(180,160,220,.4);
+  box-shadow: 0 8px 22px rgba(180, 160, 220, .4);
 }
+
 .face.tired .eye {
   top: 18px;
 }
-.face.tired .eye-left { left: 40px; }
-.face.tired .eye-right { right: 40px; }
+
+.face.tired .eye-left {
+  left: 30px;
+}
+
+.face.tired .eye-right {
+  right: 30px;
+}
 
 
 .face.anxious {
   width: 0;
   height: 0;
-  
+
   border-left: 80px solid transparent;
   border-right: 80px solid transparent;
-  border-bottom: 150px solid #96d5a4;
+  border-bottom: 150px solid #A48BFF;
   position: relative;
 }
+
 .face.anxious .eye {
   top: 40px;
 }
-.face.anxious .eye-left { left: 10px; }
-.face.anxious .eye-right { right: 10px; }
+
+.face.anxious .eye-left {
+  left: 10px;
+}
+
+.face.anxious .eye-right {
+  right: 10px;
+}
 
 
 /* 눈 */
@@ -210,8 +253,8 @@
 }
 
 .pupil {
-  width: 18px;
-  height: 18px;
+  width: 25px;
+  height: 25px;
   background: black;
   border-radius: 50%;
   position: absolute;
@@ -229,5 +272,10 @@
   top: -5px;
 }
 
-.devil-horn.left { left: 25px; }
-.devil-horn.right { right: 25px; }
+.devil-horn.left {
+  left: 25px;
+}
+
+.devil-horn.right {
+  right: 25px;
+}

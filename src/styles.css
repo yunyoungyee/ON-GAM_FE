@@ -94,6 +94,7 @@ h1.page-title {
   overflow: hidden;     
   white-space: nowrap; 
   text-overflow: ellipsis; 
+  min-height: 20px;
 }
 
 .helper-text {
