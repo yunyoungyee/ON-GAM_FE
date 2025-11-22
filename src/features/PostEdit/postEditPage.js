@@ -28,11 +28,12 @@ export async function PostEditPage(postId) {
   const { field: contentField, textarea: contentTextarea } = createTextarea();
   contentTextarea.value = post.content;
   const helperField = createHelperText();
+  const { field: uploadField, getFile} = createUploadField();
   form.append(
     titleField,
     contentField,
     helperField,
-    createUploadField(),
+    uploadField,
   );
 
   const actions = document.createElement('div');
@@ -73,13 +74,9 @@ export async function PostEditPage(postId) {
     }
 
     try {
-      const post = {
-        title,
-        content,
-        userId: user.id,
-      };
-      console.log('게시글 수정 시도', post);
-      const editResult = await api.updatePost(postId,post);
+      const userId = user.id;
+      console.log('게시글 수정 시도', {title,content,userId, postImage: getFile().name});
+      const editResult = await api.updatePost(postId,{title,content,userId, postImage: getFile()});
       console.log('게시글 수정 성공', editResult);
       navigate(`/posts/${postId}`);
 

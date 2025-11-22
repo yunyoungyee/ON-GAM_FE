@@ -77,7 +77,10 @@ export const api = {
     const formData = createFormData(data,['postImage']);
     return request('/posts', { method: 'POST', body: formData });
   },
-  updatePost: (id, data) => request(`/posts/${id}`, { method: 'PATCH', body: data }),
+  updatePost: (id, data) => {
+    const formData = createFormData(data,['postImage']);
+    return request(`/posts/${id}`, { method: 'PATCH', body: formData });
+  },
   deletePost: (id) => request(`/posts/${id}`, { method: 'DELETE' }),
   getCommentByPost: (postId) => request(`/comments/post?postId=${postId}`),
   createComment: (data) => request(`/comments`,{ method: 'POST', body: data }),
