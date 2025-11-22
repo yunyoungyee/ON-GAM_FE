@@ -4,9 +4,13 @@ const URL = "http://localhost:8080";
 
 async function request(endpoint,{method = "GET", body, headers={}}={}) {
   try{
-    const options = {method, headers: {'Content-Type': 'application/json'}};
+    const isFormData = body instanceof FormData;
+    const options = {
+      method, 
+      headers: isFormData ? {...headers} : {'Content-Type': 'application/json', ...headers}
+    };
     if(body && method !=='GET'){
-      options.body = JSON.stringify(body);
+      options.body = isFormData ? body : JSON.stringify(body);
     }
     const response = await fetch(`${URL}${endpoint}`,options);
 
@@ -31,9 +35,38 @@ async function request(endpoint,{method = "GET", body, headers={}}={}) {
   }
 }
 
+function createFormData(data, fileFields=[]){
+  const formData = new FormData();
+  const jsonData = {};
+  Object.entries(data).forEach(([key, value]) => {
+    if(fileFields.includes(key)){
+      if(value){
+        formData.append(key,value);
+      }
+    } else{ 
+        jsonData[key] = value;
+      }
+    });
+    
+    if(Object.keys(jsonData).length > 0){
+      formData.append('data', new Blob([JSON.stringify(jsonData)],{
+        type: 'application/json'
+      }));
+    }
+    return formData;
+}
+export function getImageUrl(imgPath){
+  if(!imgPath) return null;
+  if(imgPath.startsWith('http')) return imgPath;
+  return `${URL}${imgPath}`;
+}
+
 export const api = {
   login: (data) => request('/users/auth', { method: 'POST', body: data }),
-  signup: (data) => request('/users', { method: 'POST', body: data }),
+  signup: (data) => {
+    const formData = createFormData(data,['profileImage']);
+    return request('/users', { method: 'POST', body: formData });
+  },
   logout: (userId) => request(`/users/auth/token?userId=${userId}`,{ method: 'POST'}), 
   updateNickname: (id, data) => request(`/users/${id}/nickname`,{ method: 'PATCH', body: data }),
   updatePassword: (id, data) => request(`/users/${id}/password`,{ method: 'PATCH', body: data}),
