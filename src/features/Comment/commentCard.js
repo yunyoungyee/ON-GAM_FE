@@ -48,7 +48,7 @@ export function CreateCommentCard(comment, { onEdit, onDelete }) {
   const avatar = document.createElement("div");
   avatar.className = "comment-card__avatar"; // 이미지 대용
   const profileImg = document.createElement('img');
-  profileImg.src = getImageUrl(user.profileImageUrl);
+  profileImg.src = getImageUrl(comment.profileImageUrl);
   avatar.appendChild(profileImg);
   
 

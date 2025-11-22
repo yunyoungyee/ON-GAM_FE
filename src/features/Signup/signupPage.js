@@ -201,8 +201,6 @@ export function SignupPage() {
     }
 
     try {
-      //TODO: profileImage 구현하기
-      const profileImage = 'fake_img.jpg'; // 임시 이미지 경로
       console.log('회원가입 시도:', { email, password, nickname, profileImage: selectedFile.name });
       const result = await api.signup({ email, password, nickname, profileImage: selectedFile });
       console.log('회원가입 성공', result);
