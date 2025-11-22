@@ -1,3 +1,5 @@
+import { getImageUrl } from "../../shared/api/api.js";
+
 export function CreatePostCard(post) {
   const card = document.createElement('article');
   card.className = 'post-card card';
@@ -16,7 +18,7 @@ export function CreatePostCard(post) {
   // 날짜
   const date = document.createElement('span');
   date.className = 'post-card__date';
-  date.textContent = post.createdAt.replace('T',' ').slice(0,19);
+  date.textContent = post.createdAt.replace('T', ' ').slice(0, 19);
 
   // 상단 영역 (제목 + 메타 + 날짜)
   const top = document.createElement('div');
@@ -28,10 +30,13 @@ export function CreatePostCard(post) {
   divider.className = 'post-card__divider';
 
   // 작성자 영역
+  console.log(post.profileImageUrl)
   const author = document.createElement('div');
   author.className = 'post-card__author';
   author.innerHTML = `
-    <span class="avatar small"></span>
+    <div class="avatar">
+      <img src=${getImageUrl(post.profileImageUrl)}></img>
+    </div>
     <p>${post.authorNickname}</p>
   `;
 

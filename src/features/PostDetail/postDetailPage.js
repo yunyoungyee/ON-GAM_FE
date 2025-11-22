@@ -1,23 +1,11 @@
 import { createHeader } from '../../shared/components/header.js';
 import { createButton } from '../../shared/components/button.js';
 import { createModal } from '../../shared/components/modal.js';
-import { api } from '../../shared/api/api.js';
+import { api, getImageUrl } from '../../shared/api/api.js';
 import { navigate } from '../../core/router.js';
 import { CommentForm } from '../Comment/CommentForm.js';
 import { CommentList } from '../Comment/commentList.js';
-
-function getCurrentUser() {
-  try {
-    const rawData = localStorage.getItem('user');
-    if (!rawData) {
-      return null;
-    }
-    return JSON.parse(rawData);
-  } catch (e) {
-    console.error('user 파싱 에러', e);
-    return null;
-  }
-}
+import { getCurrentUser } from '../../shared/util.js';
 
 export async function PostDetailPage(postId) {
 
@@ -62,7 +50,9 @@ export async function PostDetailPage(postId) {
     const author = document.createElement('div');
     author.className = 'post-detail__author';
     author.innerHTML = `
-    <div class="avatar"></div>
+    <div class="avatar">
+      <img src=${getImageUrl(post.profileImageUrl)}></img>
+    </div>
     <div>
       <strong>${post.authorNickname}</strong>
       <span>${post.createdAt.replace('T', ' ').slice(0, 19)}</span>
@@ -109,8 +99,11 @@ export async function PostDetailPage(postId) {
 
 
     //게시글 조립 시작
-    const image = document.createElement('div');
-    image.className = 'post-detail__image';
+    const postArea = document.createElement('div');
+    postArea.className = 'post-detail__image';
+    const image = document.createElement('img');
+    image.src=getImageUrl(post.postImageUrl);
+    postArea.appendChild(image);
 
     const content = document.createElement('p');
     content.className = 'post-detail__content';
@@ -134,7 +127,7 @@ export async function PostDetailPage(postId) {
     // 게시글 조립 완료
 
 
-    article.append(title, topRow, image, content, metaInfo);
+    article.append(title, topRow, postArea, content, metaInfo);
     postDetailContainer.append(article);
     postDetailContainer.appendChild(commentForm);
     postDetailContainer.appendChild(commentList.element);
