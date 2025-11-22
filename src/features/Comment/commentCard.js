@@ -1,17 +1,6 @@
+import { getImageUrl } from "../../shared/api/api.js";
 import { createModal } from "../../shared/components/modal.js";
-
-function getCurrentUser() {
-  try {
-    const rawData = localStorage.getItem('user');
-    if (!rawData) {
-      return null;
-    }
-    return JSON.parse(rawData);
-  } catch (e) {
-    console.error('user 파싱 에러', e);
-    return null;
-  }
-}
+import { getCurrentUser } from "../../shared/util.js";
 
 function createActions(comment, { onEdit, onDelete }) {
   const actions = document.createElement("div");
@@ -58,6 +47,10 @@ export function CreateCommentCard(comment, { onEdit, onDelete }) {
 
   const avatar = document.createElement("div");
   avatar.className = "comment-card__avatar"; // 이미지 대용
+  const profileImg = document.createElement('img');
+  profileImg.src = getImageUrl(user.profileImageUrl);
+  avatar.appendChild(profileImg);
+  
 
   const info = document.createElement("div");
   info.className = "comment-card__info";
