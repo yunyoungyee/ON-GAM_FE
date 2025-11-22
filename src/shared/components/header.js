@@ -1,15 +1,15 @@
 import { navigate, logout } from '../../core/router.js';
-
+import { getCurrentUser } from '../util.js';
+import { getImageUrl } from '../api/api.js';
 export function createHeader(options = {}) {
-  const { 
-    title = '아무 말 대잔치', 
-    showBack = false, 
-    showProfile = true, 
+  const {
+    showBack = false,
+    showProfile = true,
     menuItems = [
-      {label: '회원정보수정', path: '/profile/edit'},
-      {label: '비밀번호수정', path: '/password/edit'},
-      {label: '로그아웃', onClick: logout},
-    ]} = options;
+      { label: '회원정보수정', path: '/profile/edit' },
+      { label: '비밀번호수정', path: '/password/edit' },
+      { label: '로그아웃', onClick: logout },
+    ] } = options;
   const header = document.createElement('header');
   header.className = 'app-header';
 
@@ -26,20 +26,28 @@ export function createHeader(options = {}) {
     left.appendChild(backButton);
   }
 
-  const center = document.createElement('div');
-  center.className = 'app-header__center';
-  center.textContent = title;
+  const logo = document.createElement('img');
+  logo.src = "../../../src/shared/assets/images/logo.png";
+  logo.alt = '온감 로고';
+  logo.className = 'header-logo';
 
+
+  const user = getCurrentUser();
   const right = document.createElement('div');
   right.className = 'app-header__right';
-  const avatarButton = document.createElement('button');
-  avatarButton.type = 'button';
-  avatarButton.className = 'avatar-button';
-  avatarButton.innerHTML = '<span>🙂</span>';
-  if(!showProfile){
-    avatarButton.style.display ='none';
+  const profileBtn = document.createElement('button');
+  profileBtn.type = 'button';
+  profileBtn.className = 'profile-button';
+  console.log(user.profileImageUrl);
+  if (user && user.profileImageUrl) {
+    const profileImg = document.createElement('img');
+    profileImg.src = getImageUrl(user.profileImageUrl);
+    profileBtn.appendChild(profileImg);
   }
-  right.appendChild(avatarButton);
+  if (!showProfile) {
+    profileBtn.style.display = 'none';
+  }
+  right.appendChild(profileBtn);
 
   const dropdown = document.createElement('div');
   dropdown.className = 'header-dropdown';
@@ -59,11 +67,11 @@ export function createHeader(options = {}) {
     dropdown.appendChild(button);
   });
 
-  avatarButton.addEventListener('click', () => {
+  profileBtn.addEventListener('click', () => {
     dropdown.classList.toggle('header-dropdown--open');
   });
 
   right.appendChild(dropdown);
-  header.append(left, center, right);
+  header.append(left, logo, right);
   return header;
 }

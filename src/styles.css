@@ -19,8 +19,8 @@
   --border-light: #cfcfd8;
   --text-dark: #222222;
   --text-muted: #9a9aab;
-  --primary: #ACA0EB;
-  --primary-dark: #7F6AEE ;
+  --primary: linear-gradient(135deg, #b4d2ff, #a7aefd);;
+  --primary-dark: linear-gradient(135deg, #6da7ff, #7a85ff); ;
   --danger: #ff4d4f;
   --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   font-size: 16px;
@@ -167,8 +167,9 @@ h1.page-title {
 }
 
 .tablet-only {
-  max-width: 520px;
-  margin: 0 auto;
+  max-width: 420px;
+  margin-top: 50px;
+  margin-bottom: 50px
 }
 
 @media (max-width: 600px) {
