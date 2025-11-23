@@ -26,12 +26,12 @@ export function PasswordEditPage() {
     field: pwField,
     input: pwInput, 
     helper: pwHelper,
-  } = createField('비밀번호', '비밀번호를 입력하세요', ' ');
+  } = createField('비밀번호', 'password','비밀번호를 입력하세요', ' ');
   const {
     field: pwCheckField,
     input: pwCheckInput,
     helper: pwCheckHelper,
-  } = createField('비밀번호 확인', '비밀번호를 한번 더 입력하세요', ' ');
+  } = createField('비밀번호 확인','password', '비밀번호를 한번 더 입력하세요', ' ');
   fields.append(
     pwField,
     pwCheckField,

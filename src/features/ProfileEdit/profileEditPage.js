@@ -2,7 +2,7 @@ import { createHeader } from '../../shared/components/header.js';
 import { createButton } from '../../shared/components/button.js';
 import { createModal } from '../../shared/components/modal.js';
 import { getCurrentUser } from '../../shared/util.js';
-import { api } from '../../shared/api/api.js';
+import { api, getImageUrl } from '../../shared/api/api.js';
 import { navigate } from '../../core/router.js';
 
 export function ProfileEditPage() {
@@ -29,10 +29,41 @@ export function ProfileEditPage() {
 
   const profileImage = document.createElement('div');
   profileImage.className = 'profile-edit__avatar';
+
+  const initialImageUrl = getImageUrl(user.profileImageUrl);
+  let selectedFile = null;
+  const profilePreview = document.createElement('img');
+  profilePreview.className = 'profile-edit__preview';
+  profilePreview.src = initialImageUrl;
+  profileImage.append(profilePreview);
+
   const changeBadge = document.createElement('span');
   changeBadge.className = 'profile-edit__badge';
   changeBadge.textContent = '변경';
   profileImage.append(changeBadge);
+
+  const fileInput = document.createElement('input');
+  fileInput.type = 'file';
+  fileInput.hidden = true;
+
+  changeBadge.addEventListener('click', () => {
+    fileInput.click();
+  });
+
+  fileInput.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      selectedFile = file;
+
+      const preview = new FileReader();
+      preview.onload = (e) => {
+        profilePreview.src = e.target.result;
+        profilePreview.classList.add('active');
+      };
+      preview.readAsDataURL(file);
+    }
+  });
+
 
   //email
   const emailBlock = document.createElement('div');
@@ -86,23 +117,23 @@ export function ProfileEditPage() {
 
   updateButton.addEventListener('click', async () => {
     const nickname = nicknameInput.value.trim();
-    if(!nickname){
+    if (!nickname) {
       helperText('*닉네임을 입력해주세요.');
       return;
-    } else if(nickname.length>10){
+    } else if (nickname.length > 10) {
       helperText('*닉네임은 최대 10자 까지 작성 가능합니다.');
       return;
     }
-    try{
-      const result = await api.updateNickname(user.id,nickname);
+    try {
+      const result = await api.updateProfile(user.id, {nickname,profileImage: selectedFile});
       onToast();
       helperText('');
     } catch (error) {
-      if(error.status === 409){
+      if (error.status === 409) {
         helperText('*중복된 닉네임 입니다.');
-      }else{
-      console.error('닉네임 수정 실패:',error);
-      alert('닉네임 수정에 실패했습니다.');
+      } else {
+        console.error('닉네임 수정 실패:', error);
+        alert('닉네임 수정에 실패했습니다.');
       }
     }
   })
@@ -112,11 +143,11 @@ export function ProfileEditPage() {
       title: '회원탈퇴 하시겠습니까?',
       description: '작성된 게시글과 댓글은 삭제됩니다.',
       onConfirm: async () => {
-        try{
+        try {
           await api.deleteUser(user.id);
           navigate('/login');
         } catch (error) {
-          console.log('회원탈퇴 실패',error);
+          console.log('회원탈퇴 실패', error);
           alert('회원탈퇴에 실패했습니다.');
         }
       },
@@ -125,7 +156,7 @@ export function ProfileEditPage() {
 
   container.append(emailBlock, nicknameField, actions, toast);
 
-  panel.append(title, profileText, profileImage, container);
+  panel.append(title, profileText, profileImage, fileInput, container);
   main.appendChild(panel);
   fragment.appendChild(main);
   return fragment;

@@ -68,7 +68,10 @@ export const api = {
     return request('/users', { method: 'POST', body: formData });
   },
   logout: (userId) => request(`/users/auth/token?userId=${userId}`,{ method: 'POST'}), 
-  updateNickname: (id, data) => request(`/users/${id}/nickname`,{ method: 'PATCH', body: data }),
+  updateProfile: (id, data) => {
+    const formData = createFormData(data, ['profileImage']);
+    return request(`/users/${id}/nickname`,{ method: 'PATCH', body: formData });
+  },
   updatePassword: (id, data) => request(`/users/${id}/password`,{ method: 'PATCH', body: data}),
   deleteUser: (id) => request(`/users/${id}`,{ method: 'DELETE'}),
   getPosts: () => request('/posts'), 
