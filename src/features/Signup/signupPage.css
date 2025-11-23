@@ -54,7 +54,7 @@
 .link-to-login {
   border: none;
   background: none;
-  color: var(--text-dark);
+  color: black;
   text-decoration: underline;
   cursor: pointer;
 }

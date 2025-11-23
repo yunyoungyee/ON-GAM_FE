@@ -14,23 +14,69 @@
   border: 1px solid #ededf6;
 }
 
-#intro-text{
-  text-align: center;
-  font-size: 18px;
-  line-height: 1.6;
-  margin: 20px;
+/* 게시글 슬라이더 컨테이너 */
+.post-list-slider {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  overflow-x: auto;
+  padding: 20px 50px;
+  scroll-snap-type: x mandatory; /* 스크롤 멈출 때 카드 정렬 */
 }
 
-#intro-text .hightlight{
-  font-weight: 600;
+/* 스크롤바 디자인 */
+.post-list-slider::-webkit-scrollbar {
+  height: 20px;
 }
 
-.post-list__intro p {
-  margin: 0;
+.post-list-slider::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #b8d7ff 0%, #d7e2ff 100%);
+  border-radius: 4px;
+}
+
+.post-list-slider::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* 개별 카드 항목 */
+.post-card {
+  max-width: 400px;
+  min-height: 400px;
+  flex-shrink: 0;
+  scroll-snap-align: center;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.post-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0px 4px 12px rgba(31, 53, 86, 0.1);
+}
+
+.intro-container {
+  width: 30%;
+  max-width: 600px;
+  min-width: 200px;
+  margin-top: 50px;
+  margin-left: 50px;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: left;
+  gap: 16px;
+  background: #282828;
+  border: 1px solid #747474;
+  border-radius: 16px;
+  padding: 24px 24px;
+}
+
+.intro-container .intro-box {
   font-size: 22px;
-  font-weight: 600;
+  font-weight: 400;
+  color: #ffffff;
 }
 
-.post-list__intro .ui-button {
-  width: 160px;
+.intro-container .ui-button {
+  min-width: 120px;
 }

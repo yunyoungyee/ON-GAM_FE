@@ -30,6 +30,9 @@ export function createHeader(options = {}) {
   logo.src = "../../../src/shared/assets/images/logo.png";
   logo.alt = '온감 로고';
   logo.className = 'header-logo';
+  logo.addEventListener('click',()=>{
+    navigate('/posts');
+  })
 
 
   const user = getCurrentUser();

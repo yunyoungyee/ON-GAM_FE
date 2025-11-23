@@ -1,8 +1,8 @@
 .app-header {
   position: sticky;
   top: 0;
-  background: #f9f9fb;
-  border-bottom: 1px solid #dcdce7;
+  background: #282828;
+  border-bottom: 1px solid #747474;
   padding: 0px 40px;
   display: flex;
   align-items: center;
@@ -38,7 +38,7 @@
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  border: 1px solid #d0d0dc;
+  border: 1px solid #747474;
   background: #fff;
   cursor: pointer;
   font-size: 24px;
@@ -54,11 +54,12 @@
     -webkit-user-drag: none;
 }
 .header-dropdown {
+  border-radius: 20px;
   position: absolute;
   right: 40px;
-  top: 88px;
-  background: #D9D9D9;
-  border: 1px solid #dcdce7;
+  top: 70px;
+  background: #282828;
+  border: 1px solid #747474;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
   padding: 12px 0;
   width: 180px;
@@ -67,6 +68,8 @@
 }
 
 .header-dropdown button {
+  color: var(--text-white);
+  border-radius: 100px;
   border: none;
   background: none;
   width: 100%;
@@ -77,7 +80,7 @@
 }
 
 .header-dropdown button:hover {
-  background: #f5f5fb;
+  background: #747474;
 }
 
 .header-dropdown--open {
