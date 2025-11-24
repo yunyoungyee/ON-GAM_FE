@@ -25,11 +25,12 @@
 }
 
 .app-header__back {
-  border: 1px solid #d0d0dc;
+  color: #FFFFFF;
+  border: 1px solid #747474;
   border-radius: 8px;
-  background: #fff;
+  background: #282828;
   padding: 6px 10px;
-  font-size: 22px;
+  font-size: 30px;
   cursor: pointer;
 }
 

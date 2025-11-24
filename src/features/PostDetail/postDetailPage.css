@@ -1,6 +1,6 @@
 .post-detail-page {
   justify-content: ce;
-  max-width: 600px;
+  width: 80%;
   margin: 40px auto;
   display: flex;
   flex-direction: column;
@@ -8,10 +8,12 @@
 }
 
 .post-detail {
-  background: #fff;
-  padding: 40px;
+  gap: 20px;
+  display: flex;
+  flex-direction: row;
+  background: #282828;
   border-radius: 22px;
-  border: 1px solid #e1e1ec;
+  height: 600px;
 }
 .post-detail h1{
   margin-top: 0px;
@@ -61,68 +63,47 @@
 
 .post-detail__image {
   width: 100%;
-  height: 100%;
+  height: 90%;
   border-radius: 18px;
-  background: #dfe2f0;
+  background: #282828;
   margin-bottom: 20px;
   overflow: hidden;
+  flex-shrink: 0;
 }
 .post-detail__image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     display: block;
     -webkit-user-drag: none;
 }
 
 .post-detail__content {
   line-height: 1.6;
-  color: #333;
+  color: var(--text-white);
+  height: 450px;
 }
 
 .post-detail__metaInfo {
   display: flex;
   justify-content: center; /* 카드 간 동일 간격 */
   align-items: center;
-  gap: 16px;
-  padding: 16px 12px;
-  background: #fff;
-  border-radius: 12px;
-}
-
-.metaInfo-box {
-  width: 120px;
-  height: 80px;
-
-  background: #e5e5e5;    /* 이미지와 비슷한 연한 회색 */
-  border-radius: 12px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  gap: 1px; /* 숫자와 라벨 간격 */
-}
-
-.metaInfo-box strong {
-  font-size: 20px;
-  font-weight: 700;
-  color: #000;
+  margin-right: auto;
+  gap: 10px;
 }
 
 /* 라벨 텍스트 */
 .metaInfo-box span {
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 700;
-  color: #333;
+  color: var(--text-white);
 }
 
 .comment-section {
-  background: #fff;
+  background: #ffffff;
   padding: 28px;
   border-radius: 18px;
-  border: 1px solid #e5e5f1;
+  border: 1px solid #747474;
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -131,7 +112,7 @@
 .comment-section textarea {
   min-height: 120px;
   border-radius: 12px;
-  border: 1px solid var(--border-light);
+  border: 1px solid #747474;
   padding: 14px;
   resize: none;
 }
@@ -140,4 +121,23 @@
   margin-top: 12px;
   display: flex;
   flex-direction: column;
+}
+
+.post-detail__layout {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+.post-detail__left {
+  flex: 1;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+}
+.post-detail__right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }

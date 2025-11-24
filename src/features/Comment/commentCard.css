@@ -1,10 +1,12 @@
 /* 댓글 카드 전체 */
 .comment-card {
+  width: 70%;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   padding: 16px 0;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #747474;
 }
 
 /* 왼쪽: 프로필 + 텍스트 */
@@ -58,7 +60,7 @@
 /* 댓글 내용 */
 .comment-card__content {
   font-size: 14px;
-  color: #333;
+  color: var(--text-white);
 }
 
 /* 우측 수정/삭제 버튼 영역 */

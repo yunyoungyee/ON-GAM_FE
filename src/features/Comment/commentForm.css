@@ -1,7 +1,8 @@
 /* 댓글 전체 영역 */
 .comment-section {
-    width: 100%;
-    background: #ffffff;
+    width: 70%;
+    margin: 0 auto;
+    background: #282828;
     border-radius: 16px;
     padding: 20px;
     box-shadow: 0 0 0 1px #dcdcdc inset;
@@ -19,6 +20,7 @@
 
 /* textarea */
 .comment-textarea {
+    color: #ffffff;
     width: 100%;
     height: 120px;
     padding: 16px;
@@ -27,16 +29,17 @@
     outline: none;
     font-size: 15px;
     line-height: 1.4;
-    color: #333;
+    background-color: #282828;
     border-radius: 10px;
 }
+
 
 /* action 영역 */
 .comment-action {
     display: flex;
     justify-content: flex-end;
     padding-top: 12px;
-    border-top: 1px solid #e0e0e0;
+    border-top: 1px solid #747474;
 }
 
 /* 버튼 */

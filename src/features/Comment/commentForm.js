@@ -20,10 +20,6 @@ export function CommentForm(postId, loadCallBack) {
     const section = document.createElement("section");
     section.className = "comment-section";
 
-    const label = document.createElement("label");
-    label.className = "comment-label";
-    label.textContent = "댓글을 남겨주세요!";
-
     const textarea = document.createElement("textarea");
     textarea.className = "comment-textarea";
     textarea.placeholder = "댓글을 남겨주세요!";
@@ -95,7 +91,7 @@ export function CommentForm(postId, loadCallBack) {
     });
 
     action.appendChild(button);
-    section.append(label, textarea, action)
+    section.append(textarea, action)
     section.editMode = editMode;
     return section;
 }

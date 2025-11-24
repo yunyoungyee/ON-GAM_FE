@@ -102,7 +102,7 @@ export async function PostDetailPage(postId) {
     const postArea = document.createElement('div');
     postArea.className = 'post-detail__image';
     const image = document.createElement('img');
-    image.src=getImageUrl(post.postImageUrl);
+    image.src = getImageUrl(post.postImageUrl);
     postArea.appendChild(image);
 
     const content = document.createElement('p');
@@ -112,22 +112,45 @@ export async function PostDetailPage(postId) {
     const metaInfo = document.createElement('div');
     metaInfo.className = 'post-detail__metaInfo';
     const metaInfoData = [
-      { label: '좋아요수', value: post.likes },
-      { label: '조회수', value: post.views },
-      { label: '댓글수', value: post.comments },
+      { label: '관심', value: post.likes },
+      { label: '댓글', value: post.comments },
+      { label: '조회', value: post.views },
     ];
     metaInfoData.forEach(({ label, value }) => {
       const box = document.createElement('div');
       box.className = 'metaInfo-box';
       box.innerHTML = `
-      <strong>${value}</strong>
-      <span>${label}</span>`;
+      <span>${label} ${value}</span>`;
       metaInfo.appendChild(box);
     });
     // 게시글 조립 완료
 
 
+    const layoutContainer = document.createElement('div');
+    layoutContainer.className = 'post-detail__layout';
+
+    // 왼쪽 영역: 이미지 + 작성자 정보
+    const leftSection = document.createElement('div');
+    leftSection.className = 'post-detail__left';
+    leftSection.append(postArea, topRow); // 이미지 아래 작성자
+
+    // 오른쪽 영역: 제목 + 내용 + 메타정보
+    const rightSection = document.createElement('div');
+    rightSection.className = 'post-detail__right';
+    rightSection.append(title, content, metaInfo);
+/*
+    // 수정/삭제 버튼은 우측 상단에 두는 게 자연스러움 (작성자인 경우만)
+    if (user.id === post.authorId) {
+      leftSection.append(actions);
+    }
+
+/*
     article.append(title, topRow, postArea, content, metaInfo);
+    postDetailContainer.append(article);
+    layoutContainer.append(leftSection, rightSection);
+    article.append(leftSection, rightSection);
+    */
+    article.append(leftSection, rightSection);
     postDetailContainer.append(article);
     postDetailContainer.appendChild(commentForm);
     postDetailContainer.appendChild(commentList.element);
