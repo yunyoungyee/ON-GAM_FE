@@ -42,7 +42,7 @@ export function PostListPage() {
   const user = getCurrentUser();
   const introBox = document.createElement('div');
   introBox.className = 'intro-box';
-  introBox.textContent = `${user.nickname}님 오늘의 기분은 어떠신가요?`;
+  introBox.textContent = `${user.nickname}님,\n오늘의 기분은 어떠신가요?`;
   const createPostBtn = createButton({
     label: '게시글 작성',
     onClick: () => navigate('/posts/create'),

@@ -18,7 +18,7 @@
 .post-list-slider {
   display: flex;
   flex-direction: row;
-  gap: 20px;
+  gap: 25px;
   overflow-x: auto;
   padding: 20px 50px;
   scroll-snap-type: x mandatory; /* 스크롤 멈출 때 카드 정렬 */
@@ -40,7 +40,7 @@
 
 /* 개별 카드 항목 */
 .post-card {
-  max-width: 400px;
+  width: 400px;
   min-height: 400px;
   flex-shrink: 0;
   scroll-snap-align: center;
@@ -49,22 +49,22 @@
 }
 
 .post-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0px 4px 12px rgba(31, 53, 86, 0.1);
+  transform: translateY(-15px);
+  box-shadow: 0px 10px 18px 5px rgb(255 255 255 / 26%);
 }
 
 .intro-container {
-  width: 30%;
-  max-width: 600px;
+  height: 250px;
+  width: 400px;
   min-width: 200px;
   margin-top: 50px;
   margin-left: 50px;
   margin-right: auto;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: left;
-  gap: 16px;
+  gap: 35px;
   background: #282828;
   border: 1px solid #747474;
   border-radius: 16px;
@@ -72,6 +72,7 @@
 }
 
 .intro-container .intro-box {
+  white-space: pre-line;
   font-size: 22px;
   font-weight: 400;
   color: #ffffff;

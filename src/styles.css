@@ -137,7 +137,7 @@ h1.page-title {
   color: var(--text-white);
   background: #282828;
   border-radius: 20px;
-  border: 2px solid #747474;
+  border: 1px solid #747474;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
 }
 

@@ -51,7 +51,7 @@ export function CreatePostCard(post) {
   const author = document.createElement('div');
   author.className = 'post-card__author';
   author.innerHTML = `
-    <div class="avatar">
+    <div class="avatar-mini">
       <img src=${getImageUrl(post.profileImageUrl)}></img>
     </div>
     <p>${post.authorNickname}</p>
