@@ -14,17 +14,23 @@ async function postRender(PostListContainer) {
 
     const sliderContainer = document.createElement('div');
     sliderContainer.className = 'post-list-slider';
-
+    sliderContainer.addEventListener('click', (e) => {
+      const postCard = e.target.closest('.post-card');
+      if(postCard){
+        const postId = postCard.dataset.postId;
+        navigate(`/posts/${postId}`);
+      }
+    });
     if (Array.isArray(posts)) {
       console.log('들어옴');
+      const fragment = document.createDocumentFragment();
       posts.forEach(post => {
         const card = CreatePostCard(post);
-        card.classList.add('post-card')
-        card.addEventListener('click', () => {
-          navigate(`/posts/${post.postId}`);
-        });
-        sliderContainer.appendChild(card);
+        card.classList.add('post-card');
+        card.dataset.postId = post.postId;
+        fragment.appendChild(card);
       });
+      sliderContainer.appendChild(fragment);
     }
     PostListContainer.appendChild(sliderContainer);
   } catch (error) {
@@ -50,7 +56,7 @@ export function PostListPage() {
 
   const introContainer = document.createElement('div');
   introContainer.className = 'intro-container';
-  introContainer.append(introBox,createPostBtn);
+  introContainer.append(introBox, createPostBtn);
   PostListContainer.append(introContainer);
   postRender(PostListContainer);
   fragment.appendChild(PostListContainer);
