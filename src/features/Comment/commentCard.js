@@ -40,6 +40,7 @@ function createActions(comment, { onEdit, onDelete }) {
 export function CreateCommentCard(comment, { onEdit, onDelete }) {
   const user = getCurrentUser();
   const card = document.createElement('div');
+  card.id = `comment-${comment.commentId}`;
   card.className = 'comment-card';
 
   const header = document.createElement("div");

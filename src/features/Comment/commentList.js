@@ -1,7 +1,7 @@
 import { CreateCommentCard } from "./commentCard.js";
 import { api } from "../../shared/api/api.js";
 
-export function CommentList(postId, {onEdit}){
+export function CommentList(postId, { onEdit }) {
     const CommentListContainer = document.createElement("div");
     CommentListContainer.className = "comment-list";
 
@@ -9,26 +9,32 @@ export function CommentList(postId, {onEdit}){
         const result = await api.getCommentByPost(postId);
         const comments = result.data;
         console.log(comments);
-        CommentListContainer.innerHTML="";
+        CommentListContainer.innerHTML = "";
+        const fragment = document.createDocumentFragment();
         comments.forEach(comment => {
-            CommentListContainer.appendChild(CreateCommentCard(comment,{onEdit: handleEdit, onDelete}));
+            fragment.appendChild(CreateCommentCard(comment, { onEdit: handleEdit, onDelete }));
         });
+        CommentListContainer.appendChild(fragment);
     }
-    function addComment(newComment){
-        CommentListContainer.appendChild(CreateCommentCard(newComment,{onEdit: handleEdit,onDelete}));
+
+    function addComment(newComment) {
+        CommentListContainer.appendChild(CreateCommentCard(newComment, { onEdit: handleEdit, onDelete }));
     }
-    async function onDelete(commentId){
+    async function onDelete(commentId) {
         await api.deleteComment(commentId);
-        await commentRender();//해야할일: 재렌더링 아직 새로고침이 안됨.
+        const targetComment = document.getElementById(`comment-${commentId}`);
+        if (targetComment) {
+            targetComment.remove();
+        }
     }
-    async function handleEdit(comment){
+    async function handleEdit(comment) {
         console.log("handleEdit호출");
-        if(typeof onEdit === "function"){
+        if (typeof onEdit === "function") {
             onEdit(comment);
         }
     }
     commentRender();
-    return{
+    return {
         element: CommentListContainer,  // PostDetailPage에서 appendChild 할 애
         commentRender,
         addComment
