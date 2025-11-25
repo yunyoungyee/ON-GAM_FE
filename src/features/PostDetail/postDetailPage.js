@@ -138,6 +138,9 @@ export async function PostDetailPage(postId) {
     const rightSection = document.createElement('div');
     rightSection.className = 'post-detail__right';
     rightSection.append(title, content, metaInfo);
+    
+    const divider = document.createElement('div');
+    divider.className = 'post-detail__divider';
 /*
     // 수정/삭제 버튼은 우측 상단에 두는 게 자연스러움 (작성자인 경우만)
     if (user.id === post.authorId) {
@@ -150,7 +153,7 @@ export async function PostDetailPage(postId) {
     layoutContainer.append(leftSection, rightSection);
     article.append(leftSection, rightSection);
     */
-    article.append(leftSection, rightSection);
+    article.append(leftSection, divider, rightSection);
     postDetailContainer.append(article);
     postDetailContainer.appendChild(commentForm);
     postDetailContainer.appendChild(commentList.element);

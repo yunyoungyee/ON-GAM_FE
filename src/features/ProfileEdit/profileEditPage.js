@@ -126,7 +126,10 @@ export function ProfileEditPage() {
     }
     try {
       const result = await api.updateProfile(user.id, {nickname,profileImage: selectedFile});
-      onToast();
+      localStorage.setItem('user', JSON.stringify(result.data));
+      const newProfile = document.querySelector('.profile-button img');
+      if(newProfile) newProfile.src = getImageUrl(result.profileImageUrl);
+      location.reload();
       helperText('');
     } catch (error) {
       if (error.status === 409) {

@@ -3,7 +3,10 @@
   justify-content: center;
 }
 
-.profile-panel {
+.profile-edit-page .profile-panel {
+  background-color: #282828;
+  border-color: #747474;
+  color: #FFFFFF;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -66,7 +69,7 @@
 
 .profile-email {
   font-size: 15px;
-  color: #333;
+  color: #FFFFFF;
 }
 
 .input-field {
@@ -124,7 +127,7 @@
   text-align: center;
   padding: 8px 0;
   font-size: 15px;
-  color: #555;
+  color: #ffffff;
   cursor: pointer;
 }
 

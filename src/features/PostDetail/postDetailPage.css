@@ -82,6 +82,7 @@
   line-height: 1.6;
   color: var(--text-white);
   height: 450px;
+  white-space: pre-line;
 }
 
 .post-detail__metaInfo {
@@ -140,4 +141,11 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+}
+
+.post-detail__divider {
+  width: 1px;              /* 선 두께 */
+  background: #747474;     /* 색상 (필요시 감정기반 컬러 변경 가능) */
+  height: 100%;            /* 부모 높이만큼 늘림 */
+  align-self: stretch;     /* flex 컨테이너 안에서 세로로 쭉 */
 }

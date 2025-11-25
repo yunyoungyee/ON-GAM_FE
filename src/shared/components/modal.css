@@ -10,7 +10,7 @@
 
 .modal-card {
   width: 320px;
-  background: #fff;
+  background: #282828;
   border-radius: 20px;
   padding: 32px 28px;
   text-align: center;
@@ -24,7 +24,7 @@
 
 .modal-card p {
   margin: 0 0 24px;
-  color: var(--text-muted);
+  color: var(--text-white);
 }
 
 .modal-actions {

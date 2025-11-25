@@ -14,7 +14,7 @@
   padding: 12px 16px;
   border: 1px solid var(--border-light);
   border-radius: 10px;
-  background: #fff;
+  background: #282828;
 }
 
 .upload-box__button {
@@ -25,4 +25,7 @@
 
 .upload-box__filename {
   color: var(--text-muted);
+}
+.form-field .post-input{
+  color: var(--text-white);
 }

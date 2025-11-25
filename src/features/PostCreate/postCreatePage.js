@@ -89,6 +89,7 @@ export function createField() {
   const label = document.createElement('label');
   label.textContent = '제목*';
   const input = document.createElement('input');
+  input.className = 'post-input';
   input.placeholder = '제목을 입력해주세요. (최대 26글자)';
   field.append(label, input);
   return { field, input };

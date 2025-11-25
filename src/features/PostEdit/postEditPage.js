@@ -75,7 +75,6 @@ export async function PostEditPage(postId) {
 
     try {
       const userId = user.id;
-      console.log('게시글 수정 시도', {title,content,userId, postImage: getFile().name});
       const editResult = await api.updatePost(postId,{title,content,userId, postImage: getFile()});
       console.log('게시글 수정 성공', editResult);
       navigate(`/posts/${postId}`);

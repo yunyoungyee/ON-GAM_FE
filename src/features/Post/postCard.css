@@ -33,6 +33,7 @@
   gap: 10px;
 }
 .post-card__divider{
+  margin-bottom: 0;
   border-color: #747474;
 }
 
