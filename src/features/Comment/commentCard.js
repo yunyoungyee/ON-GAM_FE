@@ -24,7 +24,6 @@ function createActions(comment, { onEdit, onDelete }) {
           description: '삭제한 내용은 복구 할 수 없습니다.',
           onConfirm: () => onDelete(comment.commentId),
         });
-        //onDelete(comment.commentId);
       } else if (label === "수정") {
         console.log("수정 클릭");
         onEdit(comment);

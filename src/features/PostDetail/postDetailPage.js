@@ -23,6 +23,7 @@ export async function PostDetailPage(postId) {
     const postDetailContainer = document.createElement('main');
     postDetailContainer.className = 'page post-detail-page';
 
+    /*
     //콜백 함수 사용(목적: )
     const commentList = CommentList(postId, {
       onEdit: (comment) => {
@@ -35,7 +36,11 @@ export async function PostDetailPage(postId) {
       commentList.addComment(newComment);
       commentList.commentRender();
     });
-
+*/
+    // commentForm은 실행할 파라미터 자체가 없어짐(콜백 제거)
+    const commentForm = CommentForm(postId);
+    // commentList는 onEdit을 넘기지 않아도 됨
+    const commentList = CommentList(postId);
     const article = document.createElement('article');
     article.className = 'post-detail';
 
@@ -138,27 +143,34 @@ export async function PostDetailPage(postId) {
     const rightSection = document.createElement('div');
     rightSection.className = 'post-detail__right';
     rightSection.append(title, content, metaInfo);
-    
+
     const divider = document.createElement('div');
     divider.className = 'post-detail__divider';
-/*
-    // 수정/삭제 버튼은 우측 상단에 두는 게 자연스러움 (작성자인 경우만)
-    if (user.id === post.authorId) {
-      leftSection.append(actions);
-    }
-
-/*
-    article.append(title, topRow, postArea, content, metaInfo);
-    postDetailContainer.append(article);
-    layoutContainer.append(leftSection, rightSection);
-    article.append(leftSection, rightSection);
-    */
+    /*
+        // 수정/삭제 버튼은 우측 상단에 두는 게 자연스러움 (작성자인 경우만)
+        if (user.id === post.authorId) {
+          leftSection.append(actions);
+        }
+    
+    /*
+        article.append(title, topRow, postArea, content, metaInfo);
+        postDetailContainer.append(article);
+        layoutContainer.append(leftSection, rightSection);
+        article.append(leftSection, rightSection);
+        */
     article.append(leftSection, divider, rightSection);
     postDetailContainer.append(article);
-    postDetailContainer.appendChild(commentForm);
+    postDetailContainer.appendChild(commentForm.element);
     postDetailContainer.appendChild(commentList.element);
+    const cleanup = () => {
+      commentForm.cleanup?.();
+      commentList.cleanup?.();
+    };
     fragment.appendChild(postDetailContainer);
-    return fragment;
+    return {
+      element: fragment,
+      cleanup,
+    };
   } catch (error) {
     console.error("실패", error.message);
   }

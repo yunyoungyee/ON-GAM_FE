@@ -14,7 +14,7 @@ function getCurrentUser() {
     }
 }
 
-export function CommentForm(postId, loadCallBack) {
+export function CommentForm(postId) {    
     let mode = "create";
     let editCommentId = null;
     const section = document.createElement("section");
@@ -33,6 +33,9 @@ export function CommentForm(postId, loadCallBack) {
     });
     button.classList.add("comment-submit");
 
+    document.addEventListener('commentEditRequest', (e) => {
+        editMode(e.detail);
+    })
     function editMode(comment) {
         console.log("editMode 호출");
         mode = "edit";
@@ -43,8 +46,12 @@ export function CommentForm(postId, loadCallBack) {
         section.scrollIntoView({behavior: 'smooth', block: 'center'});
     }
 
+    function handleEdit(e){
+        editMode(e.detail);
+    };
+    document.addEventListener('commentEditRequest', handleEdit);
+
     button.addEventListener("click", async () => {
-        console.log("클릭됨");
         const content = textarea.value.trim();
         if (!content) {
             alert("댓글을 입력해주세요!");
@@ -54,36 +61,34 @@ export function CommentForm(postId, loadCallBack) {
         const user = getCurrentUser();
         if (!user) {
             alert("로그인 후 이용해주세요.");
-            // 필요하면 로그인 페이지로 이동
-            // navigate('/login');
             return;
         }
-        console.log(mode);
         try {
-            console.log("try들어옴");
             let result;
             const comment = {
                 postId,
                 userId: user.id,
                 content,
             };
-            if (mode === "edit") {
+            if(mode==='edit'){
                 console.log("댓글 수정 시도:");
-                result = await api.updateComment(editCommentId,{postId,userId: user.id,content});
-            
-            }
-            else {
+                result = await api.updateComment(editCommentId,{postId,userId: user.id,content}); 
+                document.dispatchEvent(new CustomEvent('commentUpdate',{
+                    detail: result.data,
+                    bubbles: true
+                }));
+            } else {
                 console.log("댓글 등록 시도:", comment);
                 result = await api.createComment(comment);
-                console.log("댓글 등록 성공:", result);
+                document.dispatchEvent(new CustomEvent('commentAdd', {
+                    detail: result.data,
+                    bubbles: true
+                }));
             }
             textarea.value = "";
             button.textContent = "댓글 등록";
             mode = "create";
             editCommentId = null;
-            if (typeof loadCallBack === "function") {
-                loadCallBack(result.data);
-            }
         } catch (error) {
             console.error("댓글 등록 실패:", error);
             alert("댓글 등록에 실패했습니다.");
@@ -93,5 +98,11 @@ export function CommentForm(postId, loadCallBack) {
     action.appendChild(button);
     section.append(textarea, action)
     section.editMode = editMode;
-    return section;
+    return {
+        element: section,
+        editMode,
+        cleanup(){
+            document.removeEventListener('commentEditRequest', handleEdit);
+        }
+    };
 }

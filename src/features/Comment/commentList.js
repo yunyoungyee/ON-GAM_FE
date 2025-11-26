@@ -1,7 +1,8 @@
 import { CreateCommentCard } from "./commentCard.js";
 import { api } from "../../shared/api/api.js";
 
-export function CommentList(postId, { onEdit }) {
+//export function CommentList(postId, { onEdit }) {
+export function CommentList(postId) {
     const CommentListContainer = document.createElement("div");
     CommentListContainer.className = "comment-list";
 
@@ -27,16 +28,39 @@ export function CommentList(postId, { onEdit }) {
             targetComment.remove();
         }
     }
+    /*
     async function handleEdit(comment) {
         console.log("handleEdit호출");
         if (typeof onEdit === "function") {
             onEdit(comment);
         }
     }
+        */
+    function handleEdit(comment) {
+        document.dispatchEvent(new CustomEvent('commentEditRequest', {
+            detail: comment,
+            bubbles: true
+        }));
+    }
+
+    function handleAdd(e) {
+        addComment(e.detail);
+    }
+
+    function handleUpdate(){
+        commentRender()
+    }
+
+    document.addEventListener('commentUpdate', handleUpdate);
+    document.addEventListener('commentAdd', handleAdd);
     commentRender();
     return {
         element: CommentListContainer,  // PostDetailPage에서 appendChild 할 애
         commentRender,
-        addComment
+        addComment,
+        cleanup(){
+            document.removeEventListener('commentUpdate', handleUpdate);
+            document.removeEventListener('commentAdd', handleAdd);
+        }
     };
 }
