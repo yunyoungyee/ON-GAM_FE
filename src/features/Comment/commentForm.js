@@ -33,9 +33,6 @@ export function CommentForm(postId) {
     });
     button.classList.add("comment-submit");
 
-    document.addEventListener('commentEditRequest', (e) => {
-        editMode(e.detail);
-    })
     function editMode(comment) {
         console.log("editMode 호출");
         mode = "edit";
