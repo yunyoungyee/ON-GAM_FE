@@ -15,7 +15,8 @@
   border-radius: 22px;
   height: 600px;
 }
-.post-detail h1{
+
+.post-detail h1 {
   margin-top: 0px;
 }
 
@@ -32,13 +33,14 @@
   align-items: center;
 }
 
-.post-detail__author .avatar img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    -webkit-user-drag: none;
+.post-detail__author .avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  -webkit-user-drag: none;
 }
+
 .post-detail__author strong {
   display: block;
 }
@@ -70,12 +72,13 @@
   overflow: hidden;
   flex-shrink: 0;
 }
+
 .post-detail__image img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
-    -webkit-user-drag: none;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  -webkit-user-drag: none;
 }
 
 .post-detail__content {
@@ -87,13 +90,13 @@
 
 .post-detail__metaInfo {
   display: flex;
-  justify-content: center; /* 카드 간 동일 간격 */
+  justify-content: center;
   align-items: center;
   margin-right: auto;
   gap: 10px;
 }
 
-/* 라벨 텍스트 */
+
 .metaInfo-box span {
   font-size: 18px;
   font-weight: 700;
@@ -136,6 +139,7 @@
   display: flex;
   flex-direction: column;
 }
+
 .post-detail__right {
   flex: 1;
   display: flex;
@@ -144,8 +148,8 @@
 }
 
 .post-detail__divider {
-  width: 1px;              /* 선 두께 */
-  background: #747474;     /* 색상 (필요시 감정기반 컬러 변경 가능) */
-  height: 100%;            /* 부모 높이만큼 늘림 */
-  align-self: stretch;     /* flex 컨테이너 안에서 세로로 쭉 */
+  width: 1px;
+  background: #747474;
+  height: 100%;
+  align-self: stretch;
 }

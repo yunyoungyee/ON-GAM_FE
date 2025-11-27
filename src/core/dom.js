@@ -5,7 +5,7 @@ export function render(component) {
     throw new Error('#app element is missing.');
   }
 
-  if (typeof prevCleanup === 'function'){
+  if (typeof prevCleanup === 'function') {
     prevCleanup();
     prevCleanup = null;
   }
@@ -14,7 +14,7 @@ export function render(component) {
   if (tree instanceof Node) {
     root.appendChild(tree);
   }
-  if (tree && tree.element instanceof Node){
+  if (tree && tree.element instanceof Node) {
     root.appendChild(tree.element);
     prevCleanup = tree.cleanup || null;
   }

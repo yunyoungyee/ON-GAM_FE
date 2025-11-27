@@ -12,20 +12,16 @@ async function postRender(PostListContainer) {
     const posts = result.data;
     console.log('게시글 조회:', { posts });
 
-    let count = 0;
     const sliderContainer = document.createElement('div');
     sliderContainer.className = 'post-list-slider';
     sliderContainer.addEventListener('click', (e) => {
-      count++;
-      console.log(`🟠 commentAdd 이벤트 실행됨: ${count}회`, e.detail);
       const postCard = e.target.closest('.post-card');
-      if(postCard){
+      if (postCard) {
         const postId = postCard.dataset.postId;
         navigate(`/posts/${postId}`);
       }
     });
     if (Array.isArray(posts)) {
-      console.log('들어옴');
       const fragment = document.createDocumentFragment();
       posts.forEach(post => {
         const card = CreatePostCard(post);

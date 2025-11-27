@@ -46,11 +46,11 @@ export function CreateCommentCard(comment, { onEdit, onDelete }) {
   header.className = "comment-card__header";
 
   const avatar = document.createElement("div");
-  avatar.className = "comment-card__avatar"; // 이미지 대용
+  avatar.className = "comment-card__avatar";
   const profileImg = document.createElement('img');
   profileImg.src = getImageUrl(comment.profileImageUrl);
   avatar.appendChild(profileImg);
-  
+
 
   const info = document.createElement("div");
   info.className = "comment-card__info";

@@ -18,7 +18,6 @@ registerRoute('/posts/edit/:id', PostEditPage);
 registerRoute('/profile/edit', ProfileEditPage);
 registerRoute('/password/edit', PasswordEditPage);
 
-// 커스텀 404 확장 가능
 registerNotFound(() => {
   const div = document.createElement('div');
   div.textContent = '페이지를 찾을 수 없습니다.';

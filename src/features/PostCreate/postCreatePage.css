@@ -26,6 +26,7 @@
 .upload-box__filename {
   color: var(--text-muted);
 }
-.form-field .post-input{
+
+.form-field .post-input {
   color: var(--text-white);
 }

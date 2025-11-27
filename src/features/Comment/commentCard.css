@@ -1,4 +1,3 @@
-/* 댓글 카드 전체 */
 .comment-card {
   width: 70%;
   margin: 0 auto;
@@ -9,67 +8,59 @@
   border-bottom: 1px solid #747474;
 }
 
-/* 왼쪽: 프로필 + 텍스트 */
 .comment-card__header {
   display: flex;
   gap: 12px;
 }
 
-/* 프로필 아바타 */
 .comment-card__avatar {
   width: 36px;
   height: 36px;
   background: #ddd;
-  border-radius: 50%; /* 동그라미 */
+  border-radius: 50%;
   overflow: hidden;
 }
+
 .comment-card__avatar img {
-    /* 이미지가 버튼 영역을 꽉 채우도록 */
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* 이미지가 잘리지 않고 채우도록 */
-    display: block;
-    -webkit-user-drag: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  -webkit-user-drag: none;
 }
-/* 작성자 + 날짜 + 내용 */
+
 .comment-card__info {
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
 
-/* 작성자 + 날짜 한 줄 */
 .comment-card__author-row {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-/* 작성자명 (진하게) */
 .comment-card__author {
   font-weight: 700;
   font-size: 14px;
 }
 
-/* 날짜 */
 .comment-card__date {
   font-size: 12px;
   color: #999;
 }
 
-/* 댓글 내용 */
 .comment-card__content {
   font-size: 14px;
   color: var(--text-white);
 }
 
-/* 우측 수정/삭제 버튼 영역 */
 .comment-card__actions {
   display: flex;
   gap: 8px;
 }
 
-/* 수정/삭제 버튼 */
 .comment-card__button {
   border: 1px solid #b8a8f0;
   background: #fff;

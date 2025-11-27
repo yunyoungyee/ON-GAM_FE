@@ -13,6 +13,7 @@
 @import './features/PasswordEdit/passwordEditPage.css';
 @import './features/Comment/CommentCard.css';
 @import './features/Comment/CommentForm.css';
+
 :root {
   /*
   --bg-main: linear-gradient(180deg, #ddecff 0%, #f8faff 100%);
@@ -74,6 +75,7 @@ h1.page-title {
   font-weight: 600;
   font-size: 15px;
 }
+
 .form-field input {
   color: var(--text-dark);
   border: 1px solid #747474;
@@ -83,6 +85,7 @@ h1.page-title {
   font-family: inherit;
   background: #282828;
 }
+
 .form-field textarea {
   color: var(--text-white);
   border: 1px solid #747474;
@@ -101,11 +104,11 @@ h1.page-title {
 }
 
 .form-field .helper-text {
-  display: block;    
-  width: 100%;         
+  display: block;
+  width: 100%;
   line-height: 13px;
-  overflow: hidden;     
-  text-overflow: ellipsis; 
+  overflow: hidden;
+  text-overflow: ellipsis;
   min-height: 40px;
 }
 

@@ -1,7 +1,6 @@
 import { CreateCommentCard } from "./commentCard.js";
 import { api } from "../../shared/api/api.js";
 
-//export function CommentList(postId, { onEdit }) {
 export function CommentList(postId) {
     const CommentListContainer = document.createElement("div");
     CommentListContainer.className = "comment-list";
@@ -21,6 +20,7 @@ export function CommentList(postId) {
     function addComment(newComment) {
         CommentListContainer.appendChild(CreateCommentCard(newComment, { onEdit: handleEdit, onDelete }));
     }
+
     async function onDelete(commentId) {
         await api.deleteComment(commentId);
         const targetComment = document.getElementById(`comment-${commentId}`);
@@ -28,14 +28,7 @@ export function CommentList(postId) {
             targetComment.remove();
         }
     }
-    /*
-    async function handleEdit(comment) {
-        console.log("handleEdit호출");
-        if (typeof onEdit === "function") {
-            onEdit(comment);
-        }
-    }
-        */
+
     function handleEdit(comment) {
         document.dispatchEvent(new CustomEvent('commentEditRequest', {
             detail: comment,
@@ -47,7 +40,7 @@ export function CommentList(postId) {
         addComment(e.detail);
     }
 
-    function handleUpdate(){
+    function handleUpdate() {
         commentRender()
     }
 
@@ -55,10 +48,10 @@ export function CommentList(postId) {
     document.addEventListener('commentAdd', handleAdd);
     commentRender();
     return {
-        element: CommentListContainer,  // PostDetailPage에서 appendChild 할 애
+        element: CommentListContainer,
         commentRender,
         addComment,
-        cleanup(){
+        cleanup() {
             document.removeEventListener('commentUpdate', handleUpdate);
             document.removeEventListener('commentAdd', handleAdd);
         }

@@ -6,7 +6,6 @@ import { getCurrentUser } from '../../shared/util.js';
 import { navigate } from '../../core/router.js';
 
 export async function PostEditPage(postId) {
-  // 게시글 API
   console.log("게시글 수정을 위한 요청 시도");
   const result = await api.getPost(postId);
   const post = result.data;
@@ -28,7 +27,7 @@ export async function PostEditPage(postId) {
   const { field: contentField, textarea: contentTextarea } = createTextarea();
   contentTextarea.value = post.content;
   const helperField = createHelperText();
-  const { field: uploadField, getFile} = createUploadField();
+  const { field: uploadField, getFile } = createUploadField();
   form.append(
     titleField,
     contentField,
@@ -75,7 +74,7 @@ export async function PostEditPage(postId) {
 
     try {
       const userId = user.id;
-      const editResult = await api.updatePost(postId,{title,content,userId, postImage: getFile()});
+      const editResult = await api.updatePost(postId, { title, content, userId, postImage: getFile() });
       console.log('게시글 수정 성공', editResult);
       navigate(`/posts/${postId}`);
 

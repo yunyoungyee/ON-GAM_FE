@@ -17,7 +17,6 @@
   background: var(--primary-dark);
 }
 
-/* 호버용 css추가 */ 
 .ui-button:hover:not(:disabled) {
   background: var(--primary-dark);
 }

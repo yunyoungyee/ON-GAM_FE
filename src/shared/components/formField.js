@@ -1,4 +1,4 @@
-export function createField(label, type, placeholder, text='') {
+export function createField(label, type, placeholder, text = '') {
     const field = document.createElement('div');
     field.className = 'form-field';
     const labelEl = document.createElement('label');

@@ -65,7 +65,6 @@ export function ProfileEditPage() {
   });
 
 
-  //email
   const emailBlock = document.createElement('div');
   emailBlock.className = 'profile-email-block';
   const emailLabel = document.createElement('label');
@@ -75,7 +74,7 @@ export function ProfileEditPage() {
   emailText.textContent = user.email;
   emailBlock.append(emailLabel, emailText);
 
-  //nickname
+
   const nicknameField = document.createElement('div');
   nicknameField.className = 'input-field';
   const nicknameLabel = document.createElement('label');
@@ -87,7 +86,7 @@ export function ProfileEditPage() {
   nicknameHelper.textContent = ""
   nicknameField.append(nicknameLabel, nicknameInput, nicknameHelper);
 
-  //actions
+
   const actions = document.createElement('div');
   actions.className = 'actions';
   const updateButton = createButton({
@@ -99,7 +98,7 @@ export function ProfileEditPage() {
   cancelBtn.textContent = '회원 탈퇴';
   actions.append(updateButton, cancelBtn);
 
-  //toast
+
   const toast = document.createElement('div');
   toast.className = 'toast-message';
   toast.textContent = '수정 완료';
@@ -125,10 +124,10 @@ export function ProfileEditPage() {
       return;
     }
     try {
-      const result = await api.updateProfile(user.id, {nickname,profileImage: selectedFile});
+      const result = await api.updateProfile(user.id, { nickname, profileImage: selectedFile });
       localStorage.setItem('user', JSON.stringify(result.data));
       const newProfile = document.querySelector('.profile-button img');
-      if(newProfile) newProfile.src = getImageUrl(result.profileImageUrl);
+      if (newProfile) newProfile.src = getImageUrl(result.profileImageUrl);
       location.reload();
       helperText('');
     } catch (error) {

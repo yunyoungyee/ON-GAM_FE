@@ -121,7 +121,6 @@
   cursor: not-allowed;
 }
 
-/* 호버용 css추가 */
 .login-card .ui-button:hover:not(:disabled) {
   background: linear-gradient(135deg, #6da7ff, #7a85ff);
 }

@@ -24,14 +24,14 @@ export function PasswordEditPage() {
   fields.className = 'form-stack';
   const {
     field: pwField,
-    input: pwInput, 
+    input: pwInput,
     helper: pwHelper,
-  } = createField('비밀번호', 'password','비밀번호를 입력하세요', ' ');
+  } = createField('비밀번호', 'password', '비밀번호를 입력하세요', ' ');
   const {
     field: pwCheckField,
     input: pwCheckInput,
     helper: pwCheckHelper,
-  } = createField('비밀번호 확인','password', '비밀번호를 한번 더 입력하세요', ' ');
+  } = createField('비밀번호 확인', 'password', '비밀번호를 한번 더 입력하세요', ' ');
   fields.append(
     pwField,
     pwCheckField,
@@ -50,12 +50,12 @@ export function PasswordEditPage() {
     const pwCheck = pwCheckInput.value.trim();
     if (!password) {
       helperText(pwHelper, '*비밀번호를 입력해주세요.');
-    } else if (!validationPassword(password)){
+    } else if (!validationPassword(password)) {
       helperText(pwHelper, '*비밀번호는 8~20자, 대/소문자·숫자·특수문자를 모두 포함해야 합니다.')
-    } else if(pwCheck && !(password===pwCheck)){
+    } else if (pwCheck && !(password === pwCheck)) {
       helperText(pwHelper, '*비밀번호 확인과 다릅니다.');
-    } else{
-      helperText(pwHelper,'');
+    } else {
+      helperText(pwHelper, '');
     }
     handleInput();
   });
@@ -63,35 +63,34 @@ export function PasswordEditPage() {
   pwCheckInput.addEventListener('blur', () => {
     const password = pwInput.value.trim();
     const pwCheck = pwCheckInput.value.trim();
-    if(!pwCheck){
+    if (!pwCheck) {
       helperText(pwCheckHelper, '*비밀번호를 한번 더 입력해주세요.');
-    } else if(password && !(password===pwCheck)){
-      helperText(pwCheckHelper,'*비밀번호와 다릅니다.');
-    } else{
-      helperText(pwCheckHelper,'');
+    } else if (password && !(password === pwCheck)) {
+      helperText(pwCheckHelper, '*비밀번호와 다릅니다.');
+    } else {
+      helperText(pwCheckHelper, '');
     }
     handleInput();
   })
 
-  function handleInput(){
-  const validPw = pwHelper.textContent.trim() === '';
-  const validPwCheck = pwCheckHelper.textContent.trim() === '';
-  const blankCheck = pwCheckInput.value.trim() !=''; 
+  function handleInput() {
+    const validPw = pwHelper.textContent.trim() === '';
+    const validPwCheck = pwCheckHelper.textContent.trim() === '';
+    const blankCheck = pwCheckInput.value.trim() != '';
 
-  const isValid = validPw && validPwCheck && blankCheck;
+    const isValid = validPw && validPwCheck && blankCheck;
 
-  // 항상 버튼 상태 업데이트
-  button.classList.toggle('active', isValid);
-  button.disabled = !isValid;
+    button.classList.toggle('active', isValid);
+    button.disabled = !isValid;
   }
 
   button.addEventListener('click', async () => {
     const user = getCurrentUser();
     const newPassword = pwInput.value.trim();
-    try{
+    try {
       console.log('비밀번호 수정 시도', newPassword);
       const result = await api.updatePassword(user.id, newPassword);
-      console.log('비밀번호 수정 성공',result);
+      console.log('비밀번호 수정 성공', result);
       navigate('/login');
     } catch (error) {
       console.error('비밀번호 수정 실패', error);

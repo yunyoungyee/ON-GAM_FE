@@ -196,7 +196,7 @@ export function SignupPage() {
       alert('입력값을 확인해주세요.');
       return;
     }
-    if (!selectedFile){
+    if (!selectedFile) {
       alert('프로필 이미지를 확인해주세요.');
     }
 

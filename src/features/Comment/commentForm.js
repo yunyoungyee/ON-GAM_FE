@@ -14,7 +14,7 @@ function getCurrentUser() {
     }
 }
 
-export function CommentForm(postId) {    
+export function CommentForm(postId) {
     let mode = "create";
     let editCommentId = null;
     const section = document.createElement("section");
@@ -43,10 +43,10 @@ export function CommentForm(postId) {
         textarea.value = comment.content;
         button.textContent = "댓글 수정";
 
-        section.scrollIntoView({behavior: 'smooth', block: 'center'});
+        section.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
 
-    function handleEdit(e){
+    function handleEdit(e) {
         editMode(e.detail);
     };
     document.addEventListener('commentEditRequest', handleEdit);
@@ -70,10 +70,10 @@ export function CommentForm(postId) {
                 userId: user.id,
                 content,
             };
-            if(mode==='edit'){
+            if (mode === 'edit') {
                 console.log("댓글 수정 시도:");
-                result = await api.updateComment(editCommentId,{postId,userId: user.id,content}); 
-                document.dispatchEvent(new CustomEvent('commentUpdate',{
+                result = await api.updateComment(editCommentId, { postId, userId: user.id, content });
+                document.dispatchEvent(new CustomEvent('commentUpdate', {
                     detail: result.data,
                     bubbles: true
                 }));
@@ -101,7 +101,7 @@ export function CommentForm(postId) {
     return {
         element: section,
         editMode,
-        cleanup(){
+        cleanup() {
             document.removeEventListener('commentEditRequest', handleEdit);
         }
     };

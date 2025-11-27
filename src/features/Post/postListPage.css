@@ -14,17 +14,17 @@
   border: 1px solid #ededf6;
 }
 
-/* 게시글 슬라이더 컨테이너 */
+
 .post-list-slider {
   display: flex;
   flex-direction: row;
   gap: 25px;
   overflow-x: auto;
   padding: 20px 50px;
-  scroll-snap-type: x mandatory; /* 스크롤 멈출 때 카드 정렬 */
+  scroll-snap-type: x mandatory;
 }
 
-/* 스크롤바 디자인 */
+
 .post-list-slider::-webkit-scrollbar {
   height: 20px;
 }
@@ -38,7 +38,7 @@
   background: rgba(255, 255, 255, 0.05);
 }
 
-/* 개별 카드 항목 */
+
 .post-card {
   width: 400px;
   min-height: 400px;
