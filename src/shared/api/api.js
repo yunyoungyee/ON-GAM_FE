@@ -1,10 +1,11 @@
-const URL = "http://localhost:8080";
+const URL = "http://127.0.0.1:8080";
 
 async function request(endpoint, { method = "GET", body, headers = {} } = {}) {
   try {
     const isFormData = body instanceof FormData;
     const options = {
       method,
+      credentials: "include",
       headers: isFormData ? { ...headers } : { 'Content-Type': 'application/json', ...headers }
     };
     if (body && method !== 'GET') {
