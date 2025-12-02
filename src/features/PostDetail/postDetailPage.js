@@ -3,7 +3,7 @@ import { createButton } from '../../shared/components/button.js';
 import { createModal } from '../../shared/components/modal.js';
 import { api, getImageUrl } from '../../shared/api/api.js';
 import { navigate } from '../../core/router.js';
-import { CommentForm } from '../Comment/CommentForm.js';
+import { CommentForm } from '../Comment/commentForm.js';
 import { CommentList } from '../Comment/commentList.js';
 import { getCurrentUser } from '../../shared/util.js';
 
@@ -119,13 +119,13 @@ export async function PostDetailPage(postId) {
     leftSection.className = 'post-detail__left';
     leftSection.append(postArea, topRow);
 
+
     const rightSection = document.createElement('div');
     rightSection.className = 'post-detail__right';
     rightSection.append(title, content, metaInfo);
 
     const divider = document.createElement('div');
     divider.className = 'post-detail__divider';
-
     article.append(leftSection, divider, rightSection);
     postDetailContainer.append(article);
     postDetailContainer.appendChild(commentForm.element);
